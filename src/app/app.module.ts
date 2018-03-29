@@ -13,6 +13,7 @@ import { PicturePage } from '../pages/picture/picture';
 import { BaseHeaderComponent } from '../components/base-header/base-header'
 import { CameraProvider } from '../providers/camera/camera';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { CreateItemPage } from '../pages/create-item/create-item';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
     ListPage,
     ListItemPage,
     PicturePage,
+    CreateItemPage,
     BaseHeaderComponent
   ],
   imports: [
@@ -33,7 +35,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
     HomePage,
     ListPage,
     ListItemPage,
-    PicturePage
+    PicturePage,
+    CreateItemPage
   ],
   providers: [
     StatusBar,

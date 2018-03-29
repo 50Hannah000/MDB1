@@ -16,7 +16,7 @@
       </button>
     </ion-buttons>
     <ion-segment>
-      <ion-segment-button value="new">
+      <ion-segment-button (click)="goToCreate()" value="new" >
         New
       </ion-segment-button>
       <ion-segment-button value="hot">
@@ -31,7 +31,9 @@
   </ion-toolbar>
   <ion-card>
       <ion-card-header>
-        Jouw voorraad
+        <button ion-button (click)="goToStock()">
+            Jouw voorraad
+        </button>
       </ion-card-header>
       <ion-card-content>
        <ion-list>
