@@ -21,10 +21,10 @@ export class ListItemPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform,
     public actionsheetCtrl: ActionSheetController) {
     this.item = navParams.get('item');
-    this.item2 = {
-      name: 'Aarbei',
-      description:"Vet lekkere aardbei",
-      quantity: 4, image:'http://www.missethoreca.nl/restaurant/blog/2017/5/culi-column-michel-van-der-kroft-de-puike-aardbei-101271774'
+    this.item2 = { 
+      name: 'Aarbei', 
+      description:"Vet lekkere aardbei", 
+      quantity: 4, image:'http://www.missethoreca.nl/restaurant/blog/2017/5/culi-column-michel-van-der-kroft-de-puike-aardbei-101271774' 
     }
     console.log(this.item2.quantity)
   }
@@ -36,7 +36,7 @@ export class ListItemPage {
     console.log(this.item2.quantity)
     this.item2.quantity++;
   }
-
+  
   decrement() {
     console.log(this.item2.quantity)
     if(this.item2.quantity > 0) {

@@ -14,6 +14,8 @@ import { BaseHeaderComponent } from '../components/base-header/base-header'
 import { CameraProvider } from '../providers/camera/camera';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { CreateItemPage } from '../pages/create-item/create-item';
+import { ProductsProvider } from '../providers/products/products';
+import { DatastoreProvider } from '../providers/datastore/datastore';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { CreateItemPage } from '../pages/create-item/create-item';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CameraProvider,
-    Camera
+    Camera,
+    ProductsProvider,
+    DatastoreProvider
   ]
 })
 export class AppModule {}

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController, Platform } from 'ionic-angular';
-
+import { CameraProvider } from '../../providers/camera/camera'
 /**
  * Generated class for the CreateItemPage page.
  *
@@ -14,18 +14,17 @@ import { IonicPage, NavController, NavParams, ActionSheetController, Platform } 
   templateUrl: 'create-item.html',
 })
 export class CreateItemPage {
+
   item: {title: string, note: string, icon: string};
   item2: {name: string, description: string, quantity: number, image: string};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform,
-    public actionsheetCtrl: ActionSheetController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform, public actionsheetCtrl: ActionSheetController, public cameraService: CameraProvider) {
     this.item = navParams.get('item');
-    this.item2 = {
-      name: 'Aarbei',
-      description:"Vet lekkere aardbei",
-      quantity: 4, image:'http://www.missethoreca.nl/restaurant/blog/2017/5/culi-column-michel-van-der-kroft-de-puike-aardbei-101271774'
+    this.item2 = { 
+      name: 'Aarbei', 
+      description:"Vet lekkere aardbei", 
+      quantity: 4, image:'http://www.missethoreca.nl/restaurant/blog/2017/5/culi-column-michel-van-der-kroft-de-puike-aardbei-101271774' 
     }
-    console.log(this.item2.quantity)
   }
 
   ionViewDidLoad() {
@@ -36,7 +35,7 @@ export class CreateItemPage {
     console.log(this.item2.quantity)
     this.item2.quantity++;
   }
-
+  
   decrement() {
     console.log(this.item2.quantity)
     if(this.item2.quantity > 0) {
@@ -91,7 +90,7 @@ export class CreateItemPage {
     actionSheet.present();
   }
 
-  takePhoto(){
-    //provider moet foto maken
+  takePicture(){
+    this.cameraService.takePhoto();
   }
 }

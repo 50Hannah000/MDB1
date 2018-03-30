@@ -4,11 +4,11 @@
   <ion-list>
     <ion-item>
       <ion-avatar item-start>
-        <img src="{{item2.image}}">
+         <img [src]="cameraService.photo"/>
       </ion-avatar>
-      <button ion-button item-end (click)="takePhoto()">
+      <button ion-button item-end (click)="takePicture()"> 
           <ion-icon name="camera"></ion-icon>
-          Take Photo
+          Take Photo 
         </button>
     </ion-item>
     <ion-item>
