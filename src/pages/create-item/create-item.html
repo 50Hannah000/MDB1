@@ -1,13 +1,15 @@
-<base-header title="Listitem"></base-header>
+<base-header title="Nieuw product"></base-header>
 
 <ion-content padding class="under-nav-margin">
   <ion-list>
     <ion-item>
       <ion-avatar item-start>
-        <img src="{{item2.image}}">
+         <img [src]="cameraService.photo"/>
       </ion-avatar>
-      <h2>{{item2.name}}</h2>
-      <p>{{item2.description}}</p>
+      <button ion-button item-end (click)="takePicture()"> 
+          <ion-icon name="camera"></ion-icon>
+          Take Photo 
+        </button>
     </ion-item>
     <ion-item>
       <ion-label fixed>Product</ion-label>

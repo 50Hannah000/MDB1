@@ -9,13 +9,23 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ListItemPage } from '../pages/list-item/list-item';
+import { PicturePage } from '../pages/picture/picture';
+import { BaseHeaderComponent } from '../components/base-header/base-header'
+import { CameraProvider } from '../providers/camera/camera';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { CreateItemPage } from '../pages/create-item/create-item';
+import { ProductsProvider } from '../providers/products/products';
+import { DatastoreProvider } from '../providers/datastore/datastore';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    ListItemPage
+    ListItemPage,
+    PicturePage,
+    CreateItemPage,
+    BaseHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -26,12 +36,18 @@ import { ListItemPage } from '../pages/list-item/list-item';
     MyApp,
     HomePage,
     ListPage,
-    ListItemPage
+    ListItemPage,
+    PicturePage,
+    CreateItemPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CameraProvider,
+    Camera,
+    ProductsProvider,
+    DatastoreProvider
   ]
 })
 export class AppModule {}

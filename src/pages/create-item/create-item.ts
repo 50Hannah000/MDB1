@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController, Platform } from 'ionic-angular';
-import { Img } from 'ionic-angular/components/img/img-interface';
-
+import { CameraProvider } from '../../providers/camera/camera'
 /**
- * Generated class for the ListItemPage page.
+ * Generated class for the CreateItemPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,27 +10,27 @@ import { Img } from 'ionic-angular/components/img/img-interface';
 
 @IonicPage()
 @Component({
-  selector: 'page-list-item',
-  templateUrl: 'list-item.html',
+  selector: 'page-create-item',
+  templateUrl: 'create-item.html',
 })
-export class ListItemPage {
+export class CreateItemPage {
+
   item: {title: string, note: string, icon: string};
   item2: {name: string, description: string, quantity: number, image: string};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform,
-    public actionsheetCtrl: ActionSheetController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform, public actionsheetCtrl: ActionSheetController, public cameraService: CameraProvider) {
     this.item = navParams.get('item');
     this.item2 = { 
       name: 'Aarbei', 
       description:"Vet lekkere aardbei", 
       quantity: 4, image:'http://www.missethoreca.nl/restaurant/blog/2017/5/culi-column-michel-van-der-kroft-de-puike-aardbei-101271774' 
     }
-    console.log(this.item2.quantity)
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListItemPage');
+    console.log('ionViewDidLoad createoage');
   }
+
   increment() {
     console.log(this.item2.quantity)
     this.item2.quantity++;
@@ -43,6 +42,7 @@ export class ListItemPage {
       this.item2.quantity--;
     }
   }
+
   openMenu() {
     let actionSheet = this.actionsheetCtrl.create({
       title: 'Albums',
@@ -88,5 +88,9 @@ export class ListItemPage {
       ]
     });
     actionSheet.present();
+  }
+
+  takePicture(){
+    this.cameraService.takePhoto();
   }
 }
