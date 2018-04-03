@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController, Platform } from 'ionic-angular';
 import { CameraProvider } from '../../providers/camera/camera'
-/**
- * Generated class for the CreateItemPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Vibration } from '@ionic-native/vibration';
 
 @IonicPage()
 @Component({
@@ -17,8 +12,9 @@ export class CreateItemPage {
 
   item: {title: string, note: string, icon: string};
   item2: {name: string, description: string, quantity: number, image: string};
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform, public actionsheetCtrl: ActionSheetController, public cameraService: CameraProvider) {
+  vibration: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform, public actionsheetCtrl: ActionSheetController, public cameraService: CameraProvider, private vibrationService: Vibration) {
+    this.vibration = vibrationService;
     this.item = navParams.get('item');
     this.item2 = { 
       name: 'Aarbei', 
@@ -26,6 +22,10 @@ export class CreateItemPage {
       quantity: 4, image:'http://www.missethoreca.nl/restaurant/blog/2017/5/culi-column-michel-van-der-kroft-de-puike-aardbei-101271774' 
     }
   }
+  vibrate(){
+    this.vibration.vibrate([2000,1000,2000]);
+  }
+  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad createoage');
