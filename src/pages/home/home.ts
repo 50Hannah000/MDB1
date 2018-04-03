@@ -1,16 +1,34 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { ListPage } from '../list/list';
 import { CreateItemPage } from '../create-item/create-item';
+import { AuthenticationProvider } from '../../providers/authentication/authentication';
+import { ProductsProvider } from '../../providers/products/products';
+import { User } from '../../app/models/user';
+import { Storage } from '@ionic/storage';
 
+@IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+  user: User;
+  products: any;
 
-  constructor(public navCtrl: NavController) { }
+  constructor(private storage: Storage, public navCtrl: NavController, public auth: AuthenticationProvider, public productProvider: ProductsProvider) { }
 
+  ionViewDidLoad() {
+
+    this.storage.get('currentUser').then((user) => {
+      this.user = user;
+    });
+    
+    this.productProvider.getAllProducts().then(products => {
+      this.products = products;
+    });
+  }
+  
   goToStock() {
     this.navCtrl.push(ListPage);
   }

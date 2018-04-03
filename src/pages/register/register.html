@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Registreren</ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content class="register-content" padding>
+  <div class="register-box">
+    
+    <form [formGroup]="registerForm">
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
+            <ion-item>
+              <ion-input type="text" placeholder="Naam" formControlName="name" [class.invalid]="!registerForm.controls.name.valid && (registerForm.controls.name.dirty || submitAttempt)"></ion-input>
+            </ion-item>
+            <ion-item text-wrap *ngIf="!registerForm.controls.name.valid  && (registerForm.controls.name.dirty || submitAttempt)">
+              <p>Vul alstjeblieft een naam in.</p>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="text" placeholder="E-mail" name="email" formControlName="email" [class.invalid]="!registerForm.controls.email.valid && (registerForm.controls.email.dirty || submitAttempt)"></ion-input>
+            </ion-item>
+            <ion-item text-wrap *ngIf="!registerForm.controls.email.valid  && (registerForm.controls.email.dirty || submitAttempt)">
+              <p>Vul alstjeblieft een geldig e-mailadres in.</p>
+            </ion-item>
+            
+            <ion-item>
+              <ion-input type="password" placeholder="Wachtwoord" formControlName="password" [class.invalid]="!registerForm.controls.password.valid && (registerForm.controls.password.dirty || submitAttempt)"></ion-input>
+            </ion-item>
+            <ion-item text-wrap *ngIf="!registerForm.controls.password.valid  && (registerForm.controls.password.dirty || submitAttempt)">
+              <p>Vul alstjeblieft een geldig wachtwoord in. Het wachtwoord moet minimaal 8 tekens lang zijn en maximaal 24</p>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="password" placeholder="Wachtwoord bevestigen" formControlName="passwordConfirmation" [class.invalid]="!registerForm.controls.passwordConfirmation.valid && (registerForm.controls.passwordConfirmation.dirty || submitAttempt)"></ion-input>
+            </ion-item>
+            <ion-item text-wrap *ngIf="!registerForm.controls.passwordConfirmation.valid  && (registerForm.controls.passwordConfirmation.dirty || submitAttempt)">
+              <p>Wachtwoord is niet gelijk.</p>
+            </ion-item>
+
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row>
+        <ion-col class="signup-col">
+          <button ion-button class="submit-btn" full (click)="register()" [disabled]="!registerForm.valid">Registreren</button>
+        </ion-col>
+      </ion-row>
+      
+    </form>
+  </div>
+</ion-content>

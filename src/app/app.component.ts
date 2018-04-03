@@ -3,19 +3,13 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
-import { ListItemPage } from '../pages/list-item/list-item';
-import { PicturePage } from '../pages/picture/picture';
-import { CreateItemPage } from '../pages/create-item/create-item';
-
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = 'LoginPage';
 
   pages: Array<{title: string, component: any}>;
 
@@ -24,11 +18,11 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
-      { title: 'ListItem', component: ListItemPage },
-      { title: 'PicturePage', component: PicturePage },
-      { title: 'CreateItemPage', component: CreateItemPage }
+      { title: 'Home', component: 'HomePage' },
+      { title: 'List', component: 'ListPage' },
+      { title: 'ListItem', component: 'ListItemPage' },
+      { title: 'PicturePage', component: 'PicturePage' },
+      { title: 'CreateItemPage', component: 'CreateItemPage' },
     ];
 
   }
