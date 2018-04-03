@@ -4,10 +4,9 @@
   <ion-list>
     <ion-item>
       <ion-avatar item-start>
-         <img [src]="cameraService.photo"/>
+         <img Ng-src="cameraService.photo"/>
       </ion-avatar>
       <button ion-button item-end (click)="vibrate()"> 
-       
         Hear vibration
       </button>
       <button ion-button item-end (click)="takePicture()"> 
@@ -17,7 +16,7 @@
     </ion-item>
     <ion-item>
       <ion-label fixed>Product</ion-label>
-      <ion-input ion-end type="text" name="username" [value]="user?.username" (change)='updateUser($event.target.name,$event.target.value)'></ion-input>
+      <ion-input ion-end type="text" name="productname" [value]="product?.name" (change)='updateProduct($event.target.name,$event.target.value)'></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Hoeveelheid</ion-label>

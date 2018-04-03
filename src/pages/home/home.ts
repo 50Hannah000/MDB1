@@ -12,13 +12,16 @@ import { Storage } from '@ionic/storage';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
+
 export class HomePage {
   user: User;
   products: any;
+  text: String;
 
   constructor(private storage: Storage, public navCtrl: NavController, public auth: AuthenticationProvider, public productProvider: ProductsProvider) { }
 
   ionViewDidLoad() {
+    this.text = 'Wat leuk dat je je voorraad komt bekijken! Je kunt ook producten toevoegen en verwijderen uit je voorraad!';
 
     this.storage.get('currentUser').then((user) => {
       this.user = user;

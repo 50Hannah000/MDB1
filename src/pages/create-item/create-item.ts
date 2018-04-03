@@ -13,31 +13,26 @@ export class CreateItemPage {
   item: {title: string, note: string, icon: string};
   item2: {name: string, description: string, quantity: number, image: string};
   vibration: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform, public actionsheetCtrl: ActionSheetController, public cameraService: CameraProvider, private vibrationService: Vibration) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform, public actionsheetCtrl: ActionSheetController, public cameraService: CameraProvider, private vibrationService: Vibration) {  
     this.vibration = vibrationService;
     this.item = navParams.get('item');
     this.item2 = { 
       name: 'Aarbei', 
       description:"Vet lekkere aardbei", 
-      quantity: 4, image:'http://www.missethoreca.nl/restaurant/blog/2017/5/culi-column-michel-van-der-kroft-de-puike-aardbei-101271774' 
-    }
+      quantity: 4, image:'http://www.missethoreca.nl/restaurant/blog/2017/5/culi-column-michel-van-der-kroft-de-puike-aardbei-101271774'
+    };
   }
+
   vibrate(){
     this.vibration.vibrate([2000,1000,2000]);
-  }
-  
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad createoage');
+    console.log('vibrating');
   }
 
   increment() {
-    console.log(this.item2.quantity)
     this.item2.quantity++;
   }
   
   decrement() {
-    console.log(this.item2.quantity)
     if(this.item2.quantity > 0) {
       this.item2.quantity--;
     }

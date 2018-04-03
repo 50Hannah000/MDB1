@@ -4,7 +4,7 @@
   <ion-list>
     <ion-item>
       <ion-avatar item-start>
-        <img src="{{item2.image}}">
+        <img ng-src="{{item2.image}}">
       </ion-avatar>
       <h2>{{item2.name}}</h2>
       <p>{{item2.description}}</p>
@@ -15,11 +15,7 @@
     </ion-item>
     <ion-item>
       <ion-label>Hoeveelheid</ion-label>
-      <ion-icon name="add-circle" item-end (click)="increment()"></ion-icon>
-      <ion-note bold item-end>
-          {{item2.quantity}}
-      </ion-note>
-      <ion-icon name="remove-circle" item-end (click)="decrement()"></ion-icon>
+     
     </ion-item>
     <ion-list>
         <ion-item full>

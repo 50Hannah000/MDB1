@@ -2,13 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController, Platform } from 'ionic-angular';
 import { Img } from 'ionic-angular/components/img/img-interface';
 
-/**
- * Generated class for the ListItemPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-list-item',
@@ -42,6 +35,9 @@ export class ListItemPage {
     if(this.item2.quantity > 0) {
       this.item2.quantity--;
     }
+  }
+  save(){
+    
   }
   openMenu() {
     let actionSheet = this.actionsheetCtrl.create({
