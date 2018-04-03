@@ -14,6 +14,7 @@ import { CameraProvider } from '../providers/camera/camera';
 import { Camera } from '@ionic-native/camera';
 import { ProductsProvider } from '../providers/products/products';
 import { AuthenticationProvider } from '../providers/authentication/authentication';
+import { Vibration } from  '@ionic-native/vibration';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AuthenticationProvider } from '../providers/authentication/authenticati
     CameraProvider,
     Camera,
     ProductsProvider,
-    AuthenticationProvider
+    AuthenticationProvider,
+    Vibration
   ]
 })
 export class AppModule {}
