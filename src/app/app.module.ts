@@ -16,6 +16,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { CreateItemPage } from '../pages/create-item/create-item';
 import { ProductsProvider } from '../providers/products/products';
 import { DatastoreProvider } from '../providers/datastore/datastore';
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { GeoPage } from '../pages/geo/geo';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { DatastoreProvider } from '../providers/datastore/datastore';
     ListItemPage,
     PicturePage,
     CreateItemPage,
-    BaseHeaderComponent
+    BaseHeaderComponent,
+    GeoPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { DatastoreProvider } from '../providers/datastore/datastore';
     ListPage,
     ListItemPage,
     PicturePage,
-    CreateItemPage
+    CreateItemPage,
+    GeoPage
   ],
   providers: [
     StatusBar,
@@ -47,7 +51,8 @@ import { DatastoreProvider } from '../providers/datastore/datastore';
     CameraProvider,
     Camera,
     ProductsProvider,
-    DatastoreProvider
+    DatastoreProvider,
+    GoogleMaps
   ]
 })
 export class AppModule {}

@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { ListItemPage } from '../pages/list-item/list-item';
 import { PicturePage } from '../pages/picture/picture';
 import { CreateItemPage } from '../pages/create-item/create-item';
+import { GeoPage } from '../pages/geo/geo';
 
 @Component({
   templateUrl: 'app.html'
@@ -28,7 +29,8 @@ export class MyApp {
       { title: 'List', component: ListPage },
       { title: 'ListItem', component: ListItemPage },
       { title: 'PicturePage', component: PicturePage },
-      { title: 'CreateItemPage', component: CreateItemPage }
+      { title: 'CreateItemPage', component: CreateItemPage },
+      { title: 'GeoPage', component: GeoPage }
     ];
 
   }
