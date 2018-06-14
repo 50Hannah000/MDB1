@@ -27,33 +27,24 @@
     </ion-buttons>
   </ion-toolbar>
   <ion-card>
-      <ion-card-header>
-        <button ion-button (click)="goToStock()">
-            Jouw voorraad
-        </button>
-      </ion-card-header>
-      <ion-card-content>
-       <ion-list>
-          <ion-item *ngFor="let product of products">
-            {{ product.name }}
-          </ion-item>
-       </ion-list>
-      </ion-card-content>
-    </ion-card>
-    <ion-card>
-      <ion-card-header>
-        Map
-      </ion-card-header>
-<ion-content>
-    <div class="map_canvas" id="map_canvas">
-
-
-        <ion-row [hidden]="!menuVisible" [class]="containerClasses" padding>
-            <timeline-container>
-
-            </timeline-container>
-        </ion-row>
-    
-      </ion-content>
-    </ion-card>
+    <ion-card-header>
+      <button ion-button (click)="goToStock()">
+          Jouw voorraad
+      </button>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let product of products">
+          {{ product.name }}
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      Map
+    </ion-card-header>
+    <div id="map_canvas">
+    </div>
+  </ion-card>
 </ion-content>
