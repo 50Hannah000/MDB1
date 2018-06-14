@@ -1,49 +1,63 @@
 <base-header title="Nieuw product"></base-header>
 
 <ion-content padding class="under-nav-margin">
-  <ion-list>
-    <ion-item>
+  
+      <!-- <ion-avatar item-start>
+          <div *ngIf="item?.image; else defaultImage">
+              <img src="{{item?.image}}">
+          </div>
+          <ng-template #defaultImage>
+              <img src="../../assets/imgs/default.png">
+          </ng-template>
+      </ion-avatar>
       <ion-avatar item-start>
          <img [src]="cameraService.photo"/>
-      </ion-avatar>
-      <button ion-button item-end (click)="vibrate()"> 
-       
-        Hear vibration
-      </button>
-      <button ion-button item-end (click)="takePicture()"> 
-          <ion-icon name="camera"></ion-icon>
-          Take Photo 
-        </button>
-    </ion-item>
-    <ion-item>
-      <ion-label fixed>Product</ion-label>
-      <ion-input ion-end type="text" name="username" [value]="user?.username" (change)='updateUser($event.target.name,$event.target.value)'></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Hoeveelheid</ion-label>
-      <ion-icon name="add-circle" item-end (click)="increment()"></ion-icon>
-      <ion-note bold item-end>
-          {{item2.quantity}}
-      </ion-note>
-      <ion-icon name="remove-circle" item-end (click)="decrement()"></ion-icon>
-    </ion-item>
-    <ion-list>
-        <ion-item full>
-          <ion-label>Categorie</ion-label>
-          <ion-select [(ngModel)]="gaming">
-            <ion-option value="groente">Groente</ion-option>
-            <ion-option value="fruit">Fruit</ion-option>
-            <ion-option value="zuivel">Zuivel</ion-option>
-            <ion-option value="chips">Chips</ion-option>
-            <ion-option value="koeken">Koeken</ion-option>
-          </ion-select>
+      </ion-avatar> -->
+      
+  <form (ngSubmit)="create()" #createForm="ngForm">
+      <ion-list>
+        <ion-item>
+          <ion-avatar item-start>
+              <div *ngIf="cameraService.photo; else defaultImage">
+                  <img [src]="cameraService.photo"/>
+              </div>
+              <ng-template #defaultImage>
+                <img src="../../assets/imgs/default.png">
+              </ng-template>
+          </ion-avatar>
+          <button ion-button item-end (click)="takePicture()"> 
+            <ion-icon name="camera"></ion-icon>
+            Take Photo 
+          </button>
         </ion-item>
-      </ion-list>
-    <ion-item>
-        <button ion-button block (click)="openMenu()">
-            <ion-icon name="edit"></ion-icon>
-            Edit
+        <ion-item>
+          <ion-label>Product</ion-label>
+          <ion-input type="text" name="name" [(ngModel)]="item.name" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Hoeveelheid</ion-label>
+          <ion-icon name="add-circle" item-end (click)="increment()"></ion-icon>
+          <ion-note bold item-end>
+            {{item?.quantity}}
+          </ion-note>
+          <ion-icon name="remove-circle" item-end (click)="decrement()"></ion-icon>
+        </ion-item>
+        <ion-list>
+            <ion-item full>
+              <ion-label>Categorie</ion-label>
+              <ion-select name="category" [(ngModel)]="item.category" required>
+                <ion-option value="groente">Groente</ion-option>
+                <ion-option value="fruit">Fruit</ion-option>
+                <ion-option value="zuivel">Zuivel</ion-option>
+                <ion-option value="chips">Chips</ion-option>
+                <ion-option value="koeken">Koeken</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        <ion-item>
+        <button  ion-button class="submit-btn" full type="submit" [disabled]="!createForm.form.valid">Create
         </button>
-    </ion-item>
-  </ion-list>
+      </ion-item>
+    </ion-list>
+  </form>
 </ion-content>
