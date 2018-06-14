@@ -71,8 +71,6 @@ export class AuthenticationProvider {
     else {
       let hash = this.generateHash(credentials.password);
 
-      console.log(hash);
-
       const headers = new Headers();
         headers.append('contenttype', 'application/json');
         headers.append('Content-Type', 'application/json');
@@ -83,17 +81,29 @@ export class AuthenticationProvider {
 
       this.http.post(this.getBaseUrl() + '/users', credentials, httpOptions).map(res => res.json())
           .subscribe(
-            (data) => {
-              console.log(data);
+            (userData) => {
+              let user = userData.user;
+              this.http.post(this.getBaseUrl() + '/users/' + user._id + '/stock/', { 'user': user._id }, httpOptions).map(res => res.json())
+                .subscribe(
+                  (stockData) => {
+                    let stock = stockData.stock;
+                    let updatedUser = user;
+                    updatedUser.stock = stock._id;
+                    this.http.put(this.getBaseUrl() + '/users/' + user._id, updatedUser, httpOptions).map(res => res.json())
+                      .subscribe(
+                        (data) => {
+
+                        }
+                      )
+                  } 
+                );
             }
           );
 
-          console.log('eyo');
-
-      return Observable.create(observer => {
-        observer.next(true);
-        observer.complete();
-      });
+      // return Observable.create(observer => {
+      //   observer.next(true);
+      //   observer.complete();
+      // });
     }
   }
 
@@ -101,6 +111,8 @@ export class AuthenticationProvider {
     return Observable.create(observer => {
       this.currentUser = null;
       this.currentToken = null;
+      this.storage.set('currentToken', null);
+      this.storage.set('currentUser', null);
       observer.next(true);
       observer.complete();
     });

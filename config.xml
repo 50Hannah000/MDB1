@@ -87,4 +87,5 @@
     <plugin name="cordova-plugin-googlemaps" spec="~2.2.9">
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyD_pi2Zx0gAk76zVXUAAQ6nmBXrh01Wg-o" />
     </plugin>
+    <plugin name="onesignal-cordova-plugin" spec="^2.4.1" />
 </widget>

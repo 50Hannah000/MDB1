@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController, Platform } from 'ionic-angular';
 import { CameraProvider } from '../../providers/camera/camera'
 import { Vibration } from '@ionic-native/vibration';
+import { ProductsProvider } from '../../providers/products/products';
 
 @IonicPage()
 @Component({
@@ -18,10 +19,11 @@ export class CreateItemPage {
     public platform: Platform,
     public actionsheetCtrl: ActionSheetController,
     public cameraService: CameraProvider,
+    public productProvider: ProductsProvider,
     private vibrationService: Vibration
   ) {
     this.vibration = vibrationService;
-    this.item =  navParams.get('item') ? navParams.get('item') : { name: '', description: '', quantity: 0, image: '' }; ;
+    this.item =  navParams.get('item') ? navParams.get('item') : { name: '', description: '', price: 0, image: '' }; ;
   }
 
   vibrate() {
@@ -29,12 +31,12 @@ export class CreateItemPage {
   }
 
   increment() {
-    this.item.quantity++;
+    this.item.price++;
   }
   
   decrement() {
-    if(this.item.quantity > 0) {
-      this.item.quantity--;
+    if(this.item.price > 0) {
+      this.item.price--;
     }
   }
 

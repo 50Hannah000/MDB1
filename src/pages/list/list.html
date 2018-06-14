@@ -5,7 +5,7 @@
     <button ion-item *ngFor="let product of products" (click)="itemTapped($event, product)">
       {{product.name}}
       <div class="item-note" item-end>
-        €{{product.price}}
+        {{product.quantity}}
       </div>
     </button>
   </ion-list>
