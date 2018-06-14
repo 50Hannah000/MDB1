@@ -1,30 +1,34 @@
-<base-header title="Listitem"></base-header>
+<base-header title="ProductDetailPage"></base-header>
 
 <ion-content padding class="under-nav-margin">
+  <form (ngSubmit)="edit()" #updateForm="ngForm">
   <ion-list>
     <ion-item>
       <ion-avatar item-start>
-        <img src="{{item2.image}}">
+          <div *ngIf="item?.image; else defaultImage">
+              <img src="{{item?.image}}">
+          </div>
+          <ng-template #defaultImage>
+              <img src="../../assets/imgs/default.png">
+          </ng-template>
       </ion-avatar>
-      <h2>{{item2.name}}</h2>
-      <p>{{item2.description}}</p>
     </ion-item>
     <ion-item>
-      <ion-label fixed>Product</ion-label>
-      <ion-input ion-end type="text" name="username" [value]="user?.username" (change)='updateUser($event.target.name,$event.target.value)'></ion-input>
+      <ion-label>Product</ion-label>
+      <ion-input type="text" name="name" [(ngModel)]="item.name" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Hoeveelheid</ion-label>
-      <ion-icon name="add-circle" item-end (click)="increment()"></ion-icon>
+      <ion-icon *ngIf="item" name="add-circle" item-end (click)="increment()"></ion-icon>
       <ion-note bold item-end>
-          {{item2.quantity}}
+          {{item?.quantity}}
       </ion-note>
-      <ion-icon name="remove-circle" item-end (click)="decrement()"></ion-icon>
+      <ion-icon *ngIf="item" name="remove-circle" item-end (click)="decrement()"></ion-icon>
     </ion-item>
     <ion-list>
         <ion-item full>
           <ion-label>Categorie</ion-label>
-          <ion-select [(ngModel)]="gaming">
+          <ion-select name="category" [(ngModel)]="item.category" required>
             <ion-option value="groente">Groente</ion-option>
             <ion-option value="fruit">Fruit</ion-option>
             <ion-option value="zuivel">Zuivel</ion-option>
@@ -34,10 +38,11 @@
         </ion-item>
       </ion-list>
     <ion-item>
-        <button ion-button block (click)="openMenu()">
-            <ion-icon name="edit"></ion-icon>
+      
+        <button  ion-button class="submit-btn" full type="submit" [disabled]="!updateForm.form.valid">
             Edit
         </button>
     </ion-item>
   </ion-list>
+</form>
 </ion-content>

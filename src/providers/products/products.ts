@@ -60,7 +60,29 @@ export class ProductsProvider {
                 }
               );
       });
-    });      
+    }); 
   };
-    
+
+  // updateProduct(product){
+  //   return this.storage.get('currentToken').then(token => {
+  //     const headers = new Headers();
+  //     headers.append('Content-Type', 'application/json');
+  //     headers.append('contenttype', 'application/json');
+  //     headers.append('Authorization', 'Bearer ' + token);
+
+  //     const httpOptions = {
+  //       headers: headers
+  //     };
+
+  //     return new Promise(resolve => {
+  //       this.http.get(this.auth.getBaseUrl() + `/products/${product._id}/edit`, httpOptions).map(res => res.json())
+  //           .subscribe(data => {
+  //               resolve(data.products);
+  //             }, err => {
+  //               console.log(err);
+  //             }
+  //           );
+  //   });
+  // }); 
+  // }
 }
