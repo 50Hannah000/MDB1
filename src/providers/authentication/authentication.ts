@@ -9,7 +9,7 @@ import * as jwt from 'jwt-simple';
 import { Storage } from '@ionic/storage';
 
 const config: any = {
-  baseUrl: 'https://webs5-api.herokuapp.com/',
+  baseUrl: 'https://webs5-api.herokuapp.com',
   secret: 'HCHGB254352325NKJKLMGFJUI<L_H&(*)@(HGVHKCSVD53253252SBfgfdgdgfsegsvsf'
 }
 
