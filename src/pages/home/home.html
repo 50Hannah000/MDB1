@@ -44,8 +44,16 @@
       <ion-card-header>
         Map
       </ion-card-header>
-      <ion-card-content>
-        The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
-      </ion-card-content>
+<ion-content>
+    <div class="map_canvas" id="map_canvas">
+
+
+        <ion-row [hidden]="!menuVisible" [class]="containerClasses" padding>
+            <timeline-container>
+
+            </timeline-container>
+        </ion-row>
+    
+      </ion-content>
     </ion-card>
 </ion-content>
