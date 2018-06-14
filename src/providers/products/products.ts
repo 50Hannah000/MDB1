@@ -8,16 +8,17 @@ import { Product } from '../../app/models/product';
 @Injectable()
 export class ProductsProvider {
   currentToken: string;
+  maxPages: Number = 1;
 
   constructor(public http: Http, private auth: AuthenticationProvider, private storage: Storage) {
-
+    this.getAllProducts();
    }
 
-  getAllProducts(limit?: Number, page?: Number)
+  getAllProducts(limit?: Number, page?: Number) : Promise<Product[]>
   {
       var params = '';
       
-      if((limit && limit > 0) || (page && page > 0)) {
+      if((limit && limit > 0) || (page && page > 0 && page <= this.maxPages)) {
         params += '?';
       }
 
@@ -25,7 +26,7 @@ export class ProductsProvider {
         params += 'limit=' + limit;
       }
 
-      if(page && page > 0) {
+      if(page && page > 0 && page <= this.maxPages) {
         if(limit && limit > 0){
           params += '&';
         }
@@ -42,23 +43,12 @@ export class ProductsProvider {
           headers: headers
         };
 
-        return new Promise(resolve => {
+        return new Promise<Product[]>(resolve => {
           this.http.get(this.auth.getBaseUrl() + '/products' + params, httpOptions).map(res => res.json())
               .subscribe(data => {
-                let products: Product[] = [];
-                data.products.forEach(product => {
-                  products.push({
-                    _id: product._id,
-                    name: product.name,
-                    imagePath: product.imagePath,
-                    price: product.price
-                  });
-                });
-                resolve(products);
-                }, err => {
-                  
-                }
-              );
+                this.maxPages = data.pages;
+                resolve(data.products as Product[])
+              });
       });
     });      
   };
