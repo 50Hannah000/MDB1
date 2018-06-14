@@ -30,9 +30,9 @@ export class HomePage {
   }
   
   goToStock() {
-    this.navCtrl.push(ListPage);
+    this.navCtrl.push("ListPage");
   }
   goToCreate() {
-    this.navCtrl.push(CreateItemPage);
+    this.navCtrl.push("CreateItemPage");
   }
 }
