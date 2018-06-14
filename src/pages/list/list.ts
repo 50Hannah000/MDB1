@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ListItemPage } from '../list-item/list-item';
+import { Product } from '../../app/models/product';
+import { ProductsProvider } from '../../providers/products/products';
+import { Storage } from '@ionic/storage';
 
+@IonicPage()
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
@@ -9,31 +13,47 @@ import { ListItemPage } from '../list-item/list-item';
 export class ListPage {
   selectedItem: any;
   icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+  products: Product[] = [];
+  private page = 0;
+  private limit = 15;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
+  constructor(public navCtrl: NavController, public navParams: NavParams, public productProvider: ProductsProvider, private storage: Storage) {
+    
+  }
 
-    // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
-
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+  ionViewDidEnter() {
+    this.storage.get('products').then( products => {
+      if(products) {
+        this.products = products;
+        this.page++;
+      } else {
+        this.fetchNewPage();
+      }
+    });
   }
 
   itemTapped(event, item) {
-    console.log('listts', item)
-    // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ListItemPage, {
+    this.navCtrl.push('ListItemPage', {
       item: item
     });
+  }
+
+  protected doInfinite(infiniteScroll) {
+    setTimeout(() => {
+      this.fetchNewPage();
+      infiniteScroll.complete();
+    }, 500);
+  }
+
+  private fetchNewPage() {
+    if(this.page < this.productProvider.maxPages) {
+      this.page++;
+      this.productProvider.getAllProducts(this.limit, this.page).then(res => {
+        this.products.push.apply(this.products, res);
+        if(this.page == 1) {
+          this.storage.set('products', this.products);
+        }
+      }); 
+    }
   }
 }
