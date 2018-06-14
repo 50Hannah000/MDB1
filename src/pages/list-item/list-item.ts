@@ -16,24 +16,24 @@ export class ListItemPage {
     public platform: Platform,
     public actionsheetCtrl: ActionSheetController) 
   {
-    this.item = navParams.get('item') ? navParams.get('item') : { name: '', description: '', quantity: 0, image: '' }; ;
+    this.item = navParams.get('item') ? navParams.get('item') : { name: '', description: '', price: 0, image: '' }; ;
   }
 
   ionViewDidLoad() {
   }
 
   increment() {
-    if(this.item.quantity) {
-      if(this.item.quantity > 0 ) {
-        this.item.quantity++;
+    if(this.item.price) {
+      if(this.item.price > 0 ) {
+        this.item.price++;
       }
     }
   }
   
   decrement() {
-    if(this.item.quantity) {
-      if(this.item.quantity > 0) {
-        this.item.quantity--;
+    if(this.item.price) {
+      if(this.item.price > 0) {
+        this.item.price--;
       }
     }
   }

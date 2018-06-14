@@ -21,7 +21,7 @@
       <ion-label>Hoeveelheid</ion-label>
       <ion-icon *ngIf="item" name="add-circle" item-end (click)="increment()"></ion-icon>
       <ion-note bold item-end>
-          {{item?.quantity}}
+          {{item?.price}}
       </ion-note>
       <ion-icon *ngIf="item" name="remove-circle" item-end (click)="decrement()"></ion-icon>
     </ion-item>
