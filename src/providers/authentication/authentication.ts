@@ -111,6 +111,8 @@ export class AuthenticationProvider {
     return Observable.create(observer => {
       this.currentUser = null;
       this.currentToken = null;
+      this.storage.set('currentToken', null);
+      this.storage.set('currentUser', null);
       observer.next(true);
       observer.complete();
     });

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController, Platform } from 'ionic-angular';
 import { CameraProvider } from '../../providers/camera/camera'
 import { Vibration } from '@ionic-native/vibration';
+import { ProductsProvider } from '../../providers/products/products';
 
 @IonicPage()
 @Component({
@@ -18,6 +19,7 @@ export class CreateItemPage {
     public platform: Platform,
     public actionsheetCtrl: ActionSheetController,
     public cameraService: CameraProvider,
+    public productProvider: ProductsProvider,
     private vibrationService: Vibration
   ) {
     this.vibration = vibrationService;
