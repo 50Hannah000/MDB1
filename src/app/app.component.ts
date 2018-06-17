@@ -21,10 +21,8 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: 'HomePage' },
-      { title: 'List', component: 'ListPage' },
-      { title: 'ListItem', component: 'ListItemPage' },
-      { title: 'PicturePage', component: 'PicturePage' },
-      { title: 'CreateItemPage', component: 'CreateItemPage' },
+      { title: 'Products', component: 'ListPage' },
+      { title: 'Create Product', component: 'CreateItemPage' },
     ];
 
     this.storage.get('currentToken').then(res => {

@@ -23,7 +23,7 @@ export class CreateItemPage {
     private vibrationService: Vibration
   ) {
     this.vibration = vibrationService;
-    this.item =  navParams.get('item') ? navParams.get('item') : { name: '', description: '', price: 0, image: '' }; ;
+    this.item =  navParams.get('item') ? navParams.get('item') : { name: '', description: '', quantity: 0, image: '' }; ;
   }
 
   vibrate() {
@@ -31,12 +31,12 @@ export class CreateItemPage {
   }
 
   increment() {
-    this.item.price++;
+    this.item.quantity++;
   }
   
   decrement() {
-    if(this.item.price > 0) {
-      this.item.price--;
+    if(this.item.quantity > 0) {
+      this.item.quantity--;
     }
   }
 
