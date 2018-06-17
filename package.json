@@ -65,7 +65,6 @@
       "cordova-plugin-googlemaps": {
         "API_KEY_FOR_ANDROID": "AIzaSyD_pi2Zx0gAk76zVXUAAQ6nmBXrh01Wg-o"
       }
-      "onesignal-cordova-plugin": {}
     },
     "platforms": [
       "browser",
