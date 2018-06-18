@@ -18,6 +18,7 @@ import { Vibration } from  '@ionic-native/vibration';
 import { OneSignal } from '@ionic-native/onesignal';
 import { Geolocation } from '@ionic-native/geolocation';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @NgModule({
   declarations: [
@@ -45,8 +46,8 @@ import { AndroidPermissions } from '@ionic-native/android-permissions';
     Vibration,
     OneSignal,
     AndroidPermissions,
-    Geolocation
-
+    Geolocation,
+    SocialSharing
   ]
 })
 export class AppModule {}

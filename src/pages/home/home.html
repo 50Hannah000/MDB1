@@ -3,33 +3,35 @@
 <ion-content padding class="under-nav-margin">
     <ion-card>
       <ion-card-header>
-        Welcome, {{ user?.name }}
+        Welkom, {{ user?.name }}
       </ion-card-header>
       <ion-card-content>
-        The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
+        Gebruik deze app om jouw voorraad bij te houden, zo weet je altijd wat je in huis hebt!
       </ion-card-content>
     </ion-card>
   <ion-toolbar>
-    <ion-buttons start>
-      <button ion-button icon-only>
-        <ion-icon name="create"></ion-icon>
-      </button>
-    </ion-buttons>
     <ion-segment>
       <ion-segment-button (click)="goToCreate()" value="new" >
         New
       </ion-segment-button>
     </ion-segment>
-    <ion-buttons end>
-      <button ion-button icon-only>
-        <ion-icon name="more"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-toolbar>
   <ion-card>
       <ion-card-header>
         <button ion-button (click)="goToStock()">
             Jouw voorraad
+        </button><br>
+        <button ion-button (click)="regularShare()">
+          <ion-icon name="share"></ion-icon>
+        </button>
+        <button ion-button (click)="whatsappShare()">
+          <ion-icon name="logo-whatsapp"></ion-icon>
+        </button>
+        <button ion-button (click)="facebookShare()">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </button>
+        <button ion-button (click)="twitterShare()">
+          <ion-icon name="logo-twitter"></ion-icon>
         </button>
       </ion-card-header>
       <ion-card-content>
@@ -40,12 +42,12 @@
        </ion-list>
       </ion-card-content>
     </ion-card>
-    <ion-card>
+    <ion-card pb-6>
       <ion-card-header>
-        Map
+        <button ion-button (click)="goToMap()">Ga naar de kaart</button>
       </ion-card-header>
       <ion-card-content>
-        The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
+        Op de kaart vindt u de winkels in uw omgeving.
       </ion-card-content>
     </ion-card>
 </ion-content>

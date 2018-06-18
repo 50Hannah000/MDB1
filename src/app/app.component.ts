@@ -21,11 +21,10 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: 'HomePage' },
-      { title: 'List', component: 'ListPage' },
-      { title: 'ListItem', component: 'ListItemPage' },
-      { title: 'PicturePage', component: 'PicturePage' },
-      { title: 'CreateItemPage', component: 'CreateItemPage' },
-      { title: 'Winkels', component: 'GeoPage' }
+      { title: 'Voorraad', component: 'ListPage' },
+      { title: 'Camera', component: 'PicturePage' },
+      { title: 'Voeg een product toe', component: 'CreateItemPage' },
+      { title: 'Winkels in de omgeving', component: 'GeoPage' }
     ];
 
     this.storage.get('currentToken').then(res => {
