@@ -25,6 +25,7 @@ export class MyApp {
       { title: 'ListItem', component: 'ListItemPage' },
       { title: 'PicturePage', component: 'PicturePage' },
       { title: 'CreateItemPage', component: 'CreateItemPage' },
+      { title: 'Winkels', component: 'GeoPage' }
     ];
 
     this.storage.get('currentToken').then(res => {

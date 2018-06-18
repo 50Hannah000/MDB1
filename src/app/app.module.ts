@@ -16,6 +16,8 @@ import { ProductsProvider } from '../providers/products/products';
 import { AuthenticationProvider } from '../providers/authentication/authentication';
 import { Vibration } from  '@ionic-native/vibration';
 import { OneSignal } from '@ionic-native/onesignal';
+import { Geolocation } from '@ionic-native/geolocation';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,10 @@ import { OneSignal } from '@ionic-native/onesignal';
     ProductsProvider,
     AuthenticationProvider,
     Vibration,
-    OneSignal
+    OneSignal,
+    AndroidPermissions,
+    Geolocation
+
   ]
 })
 export class AppModule {}

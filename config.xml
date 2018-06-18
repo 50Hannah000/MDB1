@@ -83,6 +83,12 @@
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <engine name="browser" spec="5.0.3" />
-    <engine name="android" spec="~7.0.0" />
     <plugin name="onesignal-cordova-plugin" spec="^2.4.1" />
+    <plugin name="cordova-plugin-googlemaps" spec="~2.2.9">
+        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyBmuHIHbdefjJRpsOu4hQeI_ocGD4OOzJc" />
+        <variable name="API_KEY_FOR_IOS" value="AIzaSyCy0L1gpHgSGDB09Tl2FviZFQ6wtS6FVhM" />
+    </plugin>
+    <allow-navigation href="http://192.168.8.41:8100" />
+    <engine name="android" spec="~7.0.0" />
+    <plugin name="cordova-plugin-android-permissions" spec="^1.0.0" />
 </widget>
