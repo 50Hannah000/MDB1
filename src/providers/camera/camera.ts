@@ -9,7 +9,7 @@ export class CameraProvider {
   constructor(private camera: Camera, private alert: AlertController) { }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PicturePage');
+    
   };
 
   takePhoto(){
@@ -24,19 +24,19 @@ export class CameraProvider {
       this.photo = 'data:image/jpeg;base64,' + imageData;
       return this.photo;
     }, (err) => {
-      this.showErrorMessage();
+      this.showErrorMessage(err);
     });
   };
 
-  showErrorMessage(){
+  showErrorMessage(msg){
     let confirm = this.alert.create({
       title: 'Probleem met camera',
-      message: 'Camera kan niet geopend worden.',
+      message: msg,
       buttons: [
         {
           text: 'OK',
           handler: () => {
-            console.log('Disagree clicked');
+            
           }
         }
       ]

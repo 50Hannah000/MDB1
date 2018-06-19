@@ -42,10 +42,10 @@ export class GeoPage {
   private loadMap() {
       this.geolocation.getCurrentPosition({ maximumAge: 3000, timeout: 5000, enableHighAccuracy: true }).then((resp) => { 
         //gets location permission
-        this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.LOCATION).then(result => {
+        this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.ACCESS_FINE_LOCATION).then(result => {
         if(!result.hasPermission) {
-          this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.LOCATION]);
-        }},err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.LOCATION));
+          this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.ACCESS_FINE_LOCATION]);
+        }},err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.ACCESS_FINE_LOCATION));
         this.currentLocation = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
         let mapOptions = {
           center: this.currentLocation,

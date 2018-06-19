@@ -89,7 +89,7 @@
         <variable name="API_KEY_FOR_IOS" value="AIzaSyCy0L1gpHgSGDB09Tl2FviZFQ6wtS6FVhM" />
     </plugin>
     <allow-navigation href="http://192.168.8.41:8100" />
+    <plugin name="cordova-plugin-x-socialsharing" spec="^5.4.0" />
     <engine name="android" spec="~7.0.0" />
     <plugin name="cordova-plugin-android-permissions" spec="^1.0.0" />
-    <plugin name="cordova-plugin-x-socialsharing" spec="^5.4.0" />
 </widget>

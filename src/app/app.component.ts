@@ -22,7 +22,6 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: 'HomePage' },
       { title: 'Voorraad', component: 'ListPage' },
-      { title: 'Camera', component: 'PicturePage' },
       { title: 'Voeg een product toe', component: 'CreateItemPage' },
       { title: 'Winkels in de omgeving', component: 'GeoPage' }
     ];

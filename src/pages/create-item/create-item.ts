@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ActionSheetController, Platform } 
 import { CameraProvider } from '../../providers/camera/camera'
 import { Vibration } from '@ionic-native/vibration';
 import { ProductsProvider } from '../../providers/products/products';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 @IonicPage()
 @Component({
@@ -20,10 +21,11 @@ export class CreateItemPage {
     public actionsheetCtrl: ActionSheetController,
     public cameraService: CameraProvider,
     public productProvider: ProductsProvider,
-    private vibrationService: Vibration
+    private vibrationService: Vibration,
+    private androidPermissions: AndroidPermissions
   ) {
     this.vibration = vibrationService;
-    this.item =  navParams.get('item') ? navParams.get('item') : { name: '', description: '', price: 0, image: '' }; ;
+    this.item =  navParams.get('item') ? navParams.get('item') : { name: '', description: '', quantity: 0, image: '' }; ;
   }
 
   vibrate() {
@@ -31,23 +33,26 @@ export class CreateItemPage {
   }
 
   increment() {
-    this.item.price++;
+    this.item.quantity++;
   }
   
   decrement() {
-    if(this.item.price > 0) {
-      this.item.price--;
+    if(this.item.quantity > 0) {
+      this.item.quantity--;
     }
   }
 
   create() {
-    //SENTTOAPI
     this.vibrate();
     this.navCtrl.pop();
-    console.log('gepopt');
   }
 
   takePicture(){
+    this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.CAMERA).then(result => {
+      if(!result.hasPermission) {
+        this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.CAMERA]);
+      }},err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA));
+
     this.cameraService.takePhoto();
     this.item.image = this.cameraService.photo;
   }
